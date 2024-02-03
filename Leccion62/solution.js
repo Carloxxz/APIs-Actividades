@@ -12,13 +12,13 @@ const yourAPIKey = "";
 const yourBearerToken = "";
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { content: "API Response." });
+  res.render("Leccion62.ejs", { content: "API Response." });
 });
 
 app.get("/noAuth", async (req, res) => {
   try {
     const result = await axios.get(API_URL + "/random");
-    res.render("index.ejs", { content: JSON.stringify(result.data) });
+    res.render("Leccion62.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -28,7 +28,6 @@ app.get("/basicAuth", async (req, res) => {
   try {
     const result = await axios.get(
       API_URL + "/all?page=2",
-      {},
       {
         auth: {
           username: yourUsername,
@@ -36,7 +35,7 @@ app.get("/basicAuth", async (req, res) => {
         },
       }
     );
-    res.render("index.ejs", { content: JSON.stringify(result.data) });
+    res.render("Leccion62.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -50,7 +49,7 @@ app.get("/apiKey", async (req, res) => {
         apiKey: yourAPIKey,
       },
     });
-    res.render("index.ejs", { content: JSON.stringify(result.data) });
+    res.render("Leccion62.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -63,7 +62,7 @@ const config = {
 app.get("/bearerToken", async (req, res) => {
   try {
     const result = await axios.get(API_URL + "/secrets/2", config);
-    res.render("index.ejs", { content: JSON.stringify(result.data) });
+    res.render("Leccion62.ejs", { content: JSON.stringify(result.data) });
   } catch (error) {
     res.status(404).send(error.message);
   }
